@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    學生頁面
+{% endblock %}
+
+{% block content %}
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年齡</th>
+        </tr>
+        {% for stu in stus %}
+        <tr>
+            <td>{{ stu.s_id }}</td>
+            <td>{{ stu.s_name }}</td>
+            <td>{{ stu.s_age }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
