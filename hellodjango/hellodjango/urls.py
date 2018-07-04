@@ -20,10 +20,17 @@ from demo import views
 
 
 urlpatterns = [
-    # path 函数是在django2中添加进来的
-    path('', views.home),
+    # path 函数是在django2中添加进来的 不给资源进入首页
+    # index为url的名字
+    path('', views.index, name='index'),
+    # 需要一个int类型的no, 这个url对应show_teachers这个视图
+    path('subjects/<int:no>', views.show_teachers),
+    path('good/<int:no>', views.make_good_comment),
+    path('bad/<int:no>', views.make_bad_comment),
     path('admin/', admin.site.urls),
     # 正则表达式
     # url(r'^$', views.home),
     # url(r'^admin/', admin.site.urls),
+    # django1写法 - 命名捕获组 - r是原始字符串 - \d+表示一位或者多位数字
+    # url(r'subjects/(?P<no>\d+')
 ]

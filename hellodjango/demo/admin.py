@@ -1,18 +1,27 @@
 from django.contrib import admin
 
-from demo.models import Teacher
+from demo.models import Teacher, Subject
 # Register your models here.
+
+
+# 定制管理员界面
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('no', 'name', 'intro')
+    ordering = ('no',)
 
 
 # 定制模型管理类 - 继承admin下的ModelAdmin管理类
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('no', 'name', 'job', 'intro', 'motto')
+    list_display = ('no', 'name', 'intro', 'motto', 'subject', 'manager')
     # 搜索字段
     search_fields = ('name', 'intro')
     # 升序排列
     ordering = ('no', )
 
 
+# 注册subject
+admin.site.register(Subject, SubjectAdmin)
 # 注册老师模型 - 管理类
 admin.site.register(Teacher, TeacherAdmin)
+
 
